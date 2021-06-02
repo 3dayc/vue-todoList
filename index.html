@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>-TodoList-</title>
+</head>
+<body>
+        <div id="todolistapp">
+            <div class="header">
+                <h2>Todo List App</h2>
+                <input type="text" class="input" id="task" placeholder="입력 후 엔터!" v-model.trim="todo.content" @keyup.enter="addTodo">
+                <span class="addBtn" @click="addTodo">추가</span>
+            </div>
+            <ul id="todoList">
+                <li v-for="t in todoList" :class="chked(t.done)" @click="doneToggle(t.id)" v-if="t.id !== null">
+                    <span v-text="t.todo"></span>
+                    <span v-if="t.done"> (완료)</span>
+                    <span class="close" @click.stop="removeTodo(t.id)">&#x00D7;</span>
+                </li>
+            </ul>
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
